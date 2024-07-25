@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 public class DateTimeUtils {
 
     public String convertDateToString(LocalDateTime now) {
-
+        return null;
     }
 
     public LocalDateTime convertStringToDate(String str) {
-
+        return null;
     }
 }
