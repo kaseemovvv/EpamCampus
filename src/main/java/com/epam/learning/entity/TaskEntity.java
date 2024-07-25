@@ -47,6 +47,8 @@ public class TaskEntity {
     private Boolean isDeleted;
 
     private Integer orderNumber;
-    private Integer boardId;
+
+    @ManyToOne
+    private BoardEntity board;
 
 }
