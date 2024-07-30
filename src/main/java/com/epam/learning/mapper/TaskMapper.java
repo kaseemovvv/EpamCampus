@@ -14,10 +14,11 @@ public class TaskMapper {
     }
 
     public TaskEntity dtoToEntity(TaskDto taskDto, TaskEntity taskEntity) {
-
+        return new TaskEntity();
     }
 
     public TaskDto entityToDto(TaskEntity taskEntity) {
-
+        return new TaskDto();
     }
+
 }
