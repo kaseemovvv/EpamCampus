@@ -48,7 +48,6 @@ public class TaskEntity {
 
     private Integer orderNumber;
 
-    @ManyToOne
-    private BoardEntity board;
+    private Integer boardId;
 
 }

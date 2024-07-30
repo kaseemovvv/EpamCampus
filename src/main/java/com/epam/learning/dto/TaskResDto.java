@@ -2,27 +2,26 @@ package com.epam.learning.dto;
 
 import com.epam.learning.enums.Priority;
 import com.epam.learning.enums.Status;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskDto {
-
+public class TaskResDto {
     private Integer id;
-    @NotNull(message = "title shouldn't be null")
     private String title;
-    @NotNull(message = "content shouldn't be null")
     private String content;
     private Status status;
     private Priority priority;
-    @NotNull(message = "due date shouldn't be null")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private String dueDate;
+    private LocalDateTime createDate;
+    private LocalDateTime dueDate;
+    private Integer orderNumber;
+    private Integer boardId;
+
 }
