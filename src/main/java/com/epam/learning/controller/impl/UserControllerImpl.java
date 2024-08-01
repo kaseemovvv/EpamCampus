@@ -2,12 +2,13 @@ package com.epam.learning.controller.impl;
 
 import com.epam.learning.controller.UserController;
 import com.epam.learning.dto.UserResDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
 @Controller
-
+@RequiredArgsConstructor
 public class UserControllerImpl implements UserController {
 
     @Override

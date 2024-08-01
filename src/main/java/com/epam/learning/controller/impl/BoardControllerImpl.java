@@ -4,6 +4,7 @@ import com.epam.learning.controller.BoardController;
 import com.epam.learning.dto.BoardReqDto;
 import com.epam.learning.dto.BoardResDto;
 import com.epam.learning.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,12 +12,10 @@ import org.springframework.stereotype.Controller;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class BoardControllerImpl implements BoardController {
     private final BoardService boardService;
 
-    public BoardControllerImpl(BoardService boardService) {
-        this.boardService = boardService;
-    }
 
 
     @Override

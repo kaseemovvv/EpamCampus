@@ -13,6 +13,7 @@ public class BoardReqDto {
     @Schema(description = "Unique name for a user board", example = "Boom", required = true)
     @NotBlank(message = "Board Name name not be empty")
     private String title;
+
     @Schema(description = "Unique order number for a user board", example = "1", required = true)
     @NotNull(message = "Order number cannot be null")
     @Min(value = 1)

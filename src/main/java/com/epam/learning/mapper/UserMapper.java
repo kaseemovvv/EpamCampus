@@ -4,7 +4,9 @@ import com.epam.learning.dto.TaskReqDto;
 import com.epam.learning.dto.UserReqDto;
 import com.epam.learning.dto.UserResDto;
 import com.epam.learning.entity.UserEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper {
     public UserEntity dtoToEntity(UserReqDto reqDto) {
         UserEntity userEntity = new UserEntity();
