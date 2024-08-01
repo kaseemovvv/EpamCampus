@@ -1,39 +1,35 @@
 package com.epam.learning.controller;
 
-import com.epam.learning.dto.TaskResDto;
 import com.epam.learning.dto.UserResDto;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RequestMapping("/user")
-@Api(tags = "User Endpoints")
+@Tag(name = "User Endpoints")
 public interface UserController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiOperation("Create User")
+    @Operation(summary = "Create User")
     ResponseEntity<String> createUser(@RequestBody UserResDto taskResDto);
 
     @PutMapping("/{id}")
-    @ApiOperation("Update User")
+    @Operation(summary = "Update User")
     ResponseEntity<UserResDto> updateUser(@PathVariable Integer id, @RequestBody UserResDto taskResDto);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ApiOperation("Delete User by id")
-    @ApiImplicitParam(name = "id", value = "UserEntity id", paramType = "path", required = true)
+    @Operation(summary = "Delete User by id")
     ResponseEntity<String> deleteUser(@PathVariable Integer id);
 
     @GetMapping("/{id}")
-    @ApiOperation("Get User by id")
-    @ApiImplicitParam(name = "id", value = "UserEntity id", paramType = "path", required = true)
+    @Operation(summary = "Get User by id")
     ResponseEntity<UserResDto> getUser(@PathVariable Integer id);
 
     @GetMapping
-    @ApiOperation("Get list of all Users")
+    @Operation(summary = "Get list of all Users")
     ResponseEntity<List<UserResDto>> getAllUser();
 }
