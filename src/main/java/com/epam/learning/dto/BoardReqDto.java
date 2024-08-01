@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @Getter
 public class BoardReqDto {
     @Schema(description = "Unique name for a user board", example = "Boom", required = true)
-    @NotBlank(message = "Board Name name not be empty")
+    @NotBlank(message = "Board Name may not be empty")
     private String title;
 
     @Schema(description = "Unique order number for a user board", example = "1", required = true)
