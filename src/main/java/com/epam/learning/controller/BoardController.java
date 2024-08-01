@@ -1,10 +1,9 @@
 package com.epam.learning.controller;
 
+import com.epam.learning.dto.BoardReqDto;
 import com.epam.learning.dto.BoardResDto;
-import com.epam.learning.dto.TaskResDto;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,29 +12,27 @@ import java.util.List;
 
 
 @RequestMapping("/board")
-@Api(tags = "Board Endpoints")
+@Tag( name = "Board Apis")
 public interface BoardController {
-    @PostMapping
+    @PostMapping("/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiOperation("Create Board")
-    ResponseEntity<String> createBoard(@RequestBody BoardResDto taskResDto);
+    @Operation(summary = "Create Board")
+    ResponseEntity<BoardResDto> createBoard(@RequestBody BoardReqDto taskResDto, @PathVariable Integer userId);
 
     @PutMapping("/{id}")
-    @ApiOperation("Update Board")
-    ResponseEntity<BoardResDto> updateBoard(@PathVariable Integer id, @RequestBody BoardResDto taskResDto);
+    @Operation(summary = "Update Board")
+    ResponseEntity<BoardResDto> updateBoard(@PathVariable Integer id, @RequestBody BoardReqDto taskResDto);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ApiOperation("Delete Board by id")
-    @ApiImplicitParam(name = "id", value = "BoardEntity id", paramType = "path", required = true)
+    @Operation(summary = "Delete Board by id")
     ResponseEntity<String> deleteBoard(@PathVariable Integer id);
 
     @GetMapping("/{id}")
-    @ApiOperation("Get Board by id")
-    @ApiImplicitParam(name = "id", value = "BoardEntity id", paramType = "path", required = true)
-    ResponseEntity<BoardResDto> getBoard(@PathVariable Integer id);
+    @Operation(summary = "Get Board by id")
+    ResponseEntity<String> getBoard(@PathVariable Integer id);
 
-    @GetMapping
-    @ApiOperation("Get list of all Boards")
-    ResponseEntity<List<BoardResDto>> getAllBoard();
+    @GetMapping("/{userId}")
+    @Operation(summary = "Get list of all Boards")
+    ResponseEntity<List<BoardResDto>> getAllBoard(@PathVariable Integer userId);
 }

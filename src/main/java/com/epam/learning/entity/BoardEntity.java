@@ -19,4 +19,5 @@ public class BoardEntity {
     private Integer id;
     private String title;
     private Integer orderNumber;
+    private Integer userId;
 }
