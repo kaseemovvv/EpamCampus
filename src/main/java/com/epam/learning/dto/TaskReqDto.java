@@ -5,6 +5,7 @@ import com.epam.learning.enums.Status;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -16,15 +17,21 @@ public class TaskReqDto {
     private String title;
     @Schema(description = "think of the description for task", example = "need to be done this week", required = true)
     private String content;
-    @NotNull
+    @Schema(description = "")
+    @NotNull()
     private Status status;
-    @NotNull
+    @Schema(description = "Each task has it's order of priority", example = "high priority", required = true)
+    @NotNull()
     private Priority priority;
-    @NotNull
+    @Schema(description = "Write when you want to finish exact one task", example = "01.10.2024")
+    @NotNull()
     private LocalDateTime dueDate;
-    @NotNull
+    @Schema(description = "Enter in which place is your task located", example = "12", required = true)
+    @Min(1)
+    @NotNull()
     private Integer orderNumber;
-    @NotNull
+    @Schema(description = "Id of your board", example = "1", required = true)
+    @NotNull()
     private Integer boardId;
 
 }
