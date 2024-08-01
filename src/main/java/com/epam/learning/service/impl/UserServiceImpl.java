@@ -12,7 +12,6 @@ import com.epam.learning.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.rmi.AlreadyBoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,15 +25,34 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResDto createUser(UserReqDto user) {
         Optional<UserEntity> byPhoneNumber = repository.findByPhoneNumber(user.getPhoneNumber());
-        if (byPhoneNumber.isPresent()){
-            throw new AlreadyExistException("user already exist with this number : "+user.getPhoneNumber());
+        if (byPhoneNumber.isPresent()) {
+            throw new AlreadyExistException("user already exist with this number : " + user.getPhoneNumber());
         }
-        return null;
+        UserEntity userEntity = mapper.dtoToEntity(user);
+        UserEntity save = repository.save(userEntity);
+        return mapper.entityToDto(save);
     }
 
     @Override
     public UserResDto updateUser(Integer id, UserReqDto user) {
-        return null;
+        UserEntity taskEntity = repository.findById(id)
+                .orElseThrow(() -> new NotFoundException("User with this id does not exist : " + id));
+        if (user.getFullName() != null) {
+            taskEntity.setFullName(user.getFullName());
+        }
+        if (user.getPhoneNumber() != null) {
+            taskEntity.setPhoneNumber(user.getPhoneNumber());
+        }
+        if (user.getPassword() != null) {
+            taskEntity.setPassword(user.getPassword());
+        }
+        if (user.getPassword() != null) {
+            taskEntity.setPassword(user.getPassword());
+        }
+        if (user.getRole() != null) {
+            taskEntity.setRole(user.getRole());
+        }
+        return mapper.entityToDto(repository.save(taskEntity));
     }
 
     @Override
