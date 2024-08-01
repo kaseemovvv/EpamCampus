@@ -22,6 +22,6 @@ public class UserReqDto {
     @NotBlank(message = "It is crucial to create a strong password")
     @Size(min = 8, max = 12)
     private String password;
-
+    @NotNull(message = "You should choose your role")
     private Role role;
 }
