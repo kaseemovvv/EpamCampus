@@ -8,7 +8,7 @@ import com.epam.learning.dto.UserResDto;
 import java.util.List;
 
 public interface UserService {
-    UserResDto createUser(UserReqDto board, Integer userId);
+    UserResDto createUser(UserReqDto board);
 
     UserResDto updateUser(Integer id, UserReqDto board);
 
@@ -16,5 +16,5 @@ public interface UserService {
 
     UserResDto getUser(Integer id);
 
-    List<UserResDto> getAllUsers(Integer userId);
+    List<UserResDto> getAllUsers();
 }

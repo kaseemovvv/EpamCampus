@@ -1,5 +1,6 @@
 package com.epam.learning.controller;
 
+import com.epam.learning.dto.UserReqDto;
 import com.epam.learning.dto.UserResDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -14,11 +15,11 @@ public interface UserController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create User")
-    ResponseEntity<String> createUser(@RequestBody UserResDto taskResDto);
+    ResponseEntity<UserResDto> createUser(@RequestBody UserReqDto taskResDto);
 
     @PutMapping("/{id}")
     @Operation(summary = "Update User")
-    ResponseEntity<UserResDto> updateUser(@PathVariable Integer id, @RequestBody UserResDto taskResDto);
+    ResponseEntity<UserResDto> updateUser(@PathVariable Integer id, @RequestBody UserReqDto taskResDto);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

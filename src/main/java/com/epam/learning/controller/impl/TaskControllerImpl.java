@@ -18,32 +18,26 @@ public class TaskControllerImpl implements TaskController {
 
     @Override
     public ResponseEntity<TaskResDto> createTask(TaskReqDto taskResDto) {
-
         return new ResponseEntity<>(service.createTask(taskResDto), HttpStatus.OK);
-
     }
 
     @Override
     public ResponseEntity<TaskResDto> updateTask(Integer id, TaskReqDto taskResDto) {
         return new ResponseEntity<>(service.updateTask(id, taskResDto), HttpStatus.OK);
-
     }
 
     @Override
     public ResponseEntity<String> deleteTask(Integer id) {
         return new ResponseEntity<>(service.deleteTask(id), HttpStatus.OK);
-
     }
 
     @Override
     public ResponseEntity<TaskResDto> getTask(Integer id) {
         return new ResponseEntity<>(service.getTask(id), HttpStatus.OK);
-
     }
 
     @Override
     public ResponseEntity<List<TaskResDto>> getAllTask(Integer boardId) {
         return new ResponseEntity<>(service.getAllTasks(boardId), HttpStatus.OK);
-
     }
 }
